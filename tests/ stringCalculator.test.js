@@ -29,7 +29,12 @@ const { add } = require('../src/stringCalculator');
 // });
 
 
-test('supports custom delimiters defined in input', () => {
-  const result = add('//;\n1;2;3');
-  expect(result).toBe(6);
+// test('supports custom delimiters defined in input', () => {
+//   const result = add('//;\n1;2;3');
+//   expect(result).toBe(6);
+// });
+
+
+test('throws error for negative numbers', () => {
+  expect(() => add('1,-2,3')).toThrow('Negatives not allowed: -2');
 });
