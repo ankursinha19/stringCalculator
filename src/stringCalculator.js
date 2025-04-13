@@ -30,6 +30,27 @@
 //   return numbers.reduce((sum, num) => sum + num, 0);
 // }
 
+// function add(input) {
+//   if (input === '') return 0;
+
+//   // Check for custom delimiter definition at the start
+//   if (input.startsWith('//')) {
+//     const delimiterSection = input.split('\n')[0];
+//     const delimiter = delimiterSection.slice(2); // Extract delimiter
+//     input = input.slice(delimiterSection.length + 1); // Remove delimiter definition from input
+//     const delimiterRegex = new RegExp(`[${delimiter}\n,]`); // Support custom delimiter along with comma and newline
+//     const numbers = input.split(delimiterRegex).map(Number);
+//     return numbers.reduce((sum, num) => sum + num, 0);
+//   }
+
+//   // Default case for commas and newlines
+//   const delimiterRegex = /[\n,]/;
+//   const numbers = input.split(delimiterRegex).map(Number);
+//   return numbers.reduce((sum, num) => sum + num, 0);
+// }
+
+
+
 function add(input) {
   if (input === '') return 0;
 
@@ -40,12 +61,26 @@ function add(input) {
     input = input.slice(delimiterSection.length + 1); // Remove delimiter definition from input
     const delimiterRegex = new RegExp(`[${delimiter}\n,]`); // Support custom delimiter along with comma and newline
     const numbers = input.split(delimiterRegex).map(Number);
+
+    // Check for negatives
+    const negatives = numbers.filter(num => num < 0);
+    if (negatives.length > 0) {
+      throw new Error(`Negatives not allowed: ${negatives.join(', ')}`);
+    }
+
     return numbers.reduce((sum, num) => sum + num, 0);
   }
 
   // Default case for commas and newlines
   const delimiterRegex = /[\n,]/;
   const numbers = input.split(delimiterRegex).map(Number);
+
+  // Check for negatives
+  const negatives = numbers.filter(num => num < 0);
+  if (negatives.length > 0) {
+    throw new Error(`Negatives not allowed: ${negatives.join(', ')}`);
+  }
+
   return numbers.reduce((sum, num) => sum + num, 0);
 }
 
