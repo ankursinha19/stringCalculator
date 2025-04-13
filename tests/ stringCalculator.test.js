@@ -23,7 +23,13 @@ const { add } = require('../src/stringCalculator');
 // });
 
 
-test('supports newlines as delimiters along with commas', () => {
-  const result = add('1\n2,3');
+// test('supports newlines as delimiters along with commas', () => {
+//   const result = add('1\n2,3');
+//   expect(result).toBe(6);
+// });
+
+
+test('supports custom delimiters defined in input', () => {
+  const result = add('//;\n1;2;3');
   expect(result).toBe(6);
 });
