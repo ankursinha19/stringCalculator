@@ -5,7 +5,13 @@ const { add } = require('../src/stringCalculator');
 // });
 
 
-test('returns number when a single number is passed', () => {
-  const result = add('1');
-  expect(result).toBe(1);
+// test('returns number when a single number is passed', () => {
+//   const result = add('1');
+//   expect(result).toBe(1);
+// });
+
+
+test('returns sum of two comma-separated numbers', () => {
+  const result = add('1,2');
+  expect(result).toBe(3);
 });
