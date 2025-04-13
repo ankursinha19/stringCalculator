@@ -17,7 +17,13 @@ const { add } = require('../src/stringCalculator');
 // });
 
 
-test('returns sum of multiple comma-separated numbers', () => {
-  const result = add('1,2,3,4');
-  expect(result).toBe(10);
+// test('returns sum of multiple comma-separated numbers', () => {
+//   const result = add('1,2,3,4');
+//   expect(result).toBe(10);
+// });
+
+
+test('supports newlines as delimiters along with commas', () => {
+  const result = add('1\n2,3');
+  expect(result).toBe(6);
 });
